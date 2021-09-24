@@ -1,0 +1,5 @@
+Bitte diesen Ordner für jedes Teammitglied kopieren und entsprechend benennen:
+
+z.B. Teammitglied Jane Doe
+
+==> Ordnername: Workspace_JD
