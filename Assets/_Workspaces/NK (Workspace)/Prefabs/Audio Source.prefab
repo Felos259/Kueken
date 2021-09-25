@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5540787076498783219}
   - component: {fileID: 31904316740406861}
-  - component: {fileID: 3769131308286590412}
+  - component: {fileID: 1189052841888941379}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -128,7 +128,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3769131308286590412
+--- !u!114 &1189052841888941379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,10 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7bc566dc4f75c74199742a4fd1e1c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintergrundSound_Kueken: {fileID: 8300000, guid: 4263e4b0a5d92c5429bd459f047f5480,
-    type: 3}
-  verzweifelt_Pipsen: {fileID: 8300000, guid: 203cc3f560beb7d49a83bf6cf4903037, type: 3}
-  kueken_WinSound: {fileID: 8300000, guid: e01e48ab952b70e449d16088d58d7000, type: 3}
+  hintergrundSound: {fileID: 8300000, guid: 641cdaaf4c52b9a4bb5cfb7f5a8287a3, type: 3}
+  sterben: {fileID: 8300000, guid: e7a175a13365f244aaf212d2ec7480a5, type: 3}
+  kueken_WinSound: {fileID: 8300000, guid: 507134e5dbafbd04fa6d8fb85dcd96de, type: 3}
   kaeferSummen: {fileID: 8300000, guid: 83d70d442cf455449a2cc801310aa3c6, type: 3}
   springen: {fileID: 8300000, guid: 244e4d045f962b84ba34f4bb90072417, type: 3}
-  froehliches_Pipsen: {fileID: 8300000, guid: c78e0c56d1e9d704da3a0a217d151429, type: 3}
+  toeten: {fileID: 8300000, guid: d9d31c23c0870a84887bb9d137853ab5, type: 3}
+  gehen: {fileID: 8300000, guid: c76b333b91342f14fb980072e98c47b6, type: 3}
