@@ -12,6 +12,7 @@ public class Kueken : MonoBehaviour
     [SerializeField] float MinimaleSpringhöhe = 2;
 
     public GameObject message;
+    public Soundboard sound;
 
     //Höhe am anfang des Sprunges
     float Anfangshöhe;
@@ -98,6 +99,6 @@ public class Kueken : MonoBehaviour
     public void Die(){
         var pos = message.GetComponent<Transform>().position;
         message.GetComponent<Transform>().position = new Vector3(rigid.position.x - 15, pos.y, 20);
-
+        sound.SoundSterben();
     }
 }
