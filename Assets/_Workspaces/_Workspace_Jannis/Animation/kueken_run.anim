@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: kueken_idle
+  m_Name: kueken_run
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,20 +20,14 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: b04e399202aff424483f408fb16a13df, type: 3}
-    - time: 0.2
-      value: {fileID: 21300000, guid: 84af3af19d6a10b4ba1961a127ee2ab8, type: 3}
-    - time: 0.45
-      value: {fileID: 21300000, guid: 2bce6a32e5b394149878e7799e7b8407, type: 3}
-    - time: 0.7
-      value: {fileID: 21300000, guid: 84af3af19d6a10b4ba1961a127ee2ab8, type: 3}
-    - time: 0.95
-      value: {fileID: 21300000, guid: 84af3af19d6a10b4ba1961a127ee2ab8, type: 3}
+      value: {fileID: 21300000, guid: 81b8f740b9e731049a1f6b16c9e14961, type: 3}
+    - time: 0.125
+      value: {fileID: 21300000, guid: d33026cb4de421a42bc6c69e86aab5a3, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 40
+  m_SampleRate: 8
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -48,17 +42,14 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: b04e399202aff424483f408fb16a13df, type: 3}
-    - {fileID: 21300000, guid: 84af3af19d6a10b4ba1961a127ee2ab8, type: 3}
-    - {fileID: 21300000, guid: 2bce6a32e5b394149878e7799e7b8407, type: 3}
-    - {fileID: 21300000, guid: 84af3af19d6a10b4ba1961a127ee2ab8, type: 3}
-    - {fileID: 21300000, guid: 84af3af19d6a10b4ba1961a127ee2ab8, type: 3}
+    - {fileID: 21300000, guid: 81b8f740b9e731049a1f6b16c9e14961, type: 3}
+    - {fileID: 21300000, guid: d33026cb4de421a42bc6c69e86aab5a3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.97499996
+    m_StopTime: 0.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -77,18 +68,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

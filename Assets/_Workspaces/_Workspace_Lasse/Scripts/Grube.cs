@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Grube : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D other)
+
+    public Kueken player;
+
+    private void OnTriggerEnter(Collider other)
     {
-        Kueken player = other.gameObject.GetComponent<Kueken>();
-        if (player == null)
-            return;
-        player.GetComponent<PolygonCollider2D>().enabled = true;
+        //Kueken player = other.gameObject.GetComponent<Kueken>();
+        //if (player == null)
+          //  return;
+        //player.GetComponent<PolygonCollider2D>().enabled = true;
+        player.Die();
+        System.Console.WriteLine("now");
     }
 }
