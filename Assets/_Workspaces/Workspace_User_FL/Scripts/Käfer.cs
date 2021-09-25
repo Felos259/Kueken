@@ -6,7 +6,9 @@ public class Käfer : MonoBehaviour
 {
 
     [SerializeField] PolygonCollider2D _polygonCollider;
+    [SerializeField] BoxCollider2D _boxCollider;
     [SerializeField] Sprite _deadSprite;
+    [SerializeField] SpriteRenderer _renderer;
     bool _hasDied;
     SpriteRenderer sprite;
     [SerializeField] ParticleSystem _particleSystem;
@@ -90,9 +92,13 @@ public class Käfer : MonoBehaviour
     void Die()
     {
         _hasDied = true;
+        if(_polygonCollider.enabled)_polygonCollider.enabled = false;
+        if(_boxCollider.enabled)_boxCollider.enabled = false;
+        _renderer.enabled = false;
         GetComponent<SpriteRenderer>().sprite = _deadSprite;
         _particleSystem.Play();
-        _polygonCollider.enabled = false;
+        Destroy(this.transform.parent.parent.gameObject, 1.5f);
+        //_polygonCollider.enabled = false;
         //gameObject.SetActive(false);
     }
 }

@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704619843096372508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.6, y: 2.6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.53, y: 1.14, z: 0}
+  m_LocalScale: {x: 2.0253801, y: 1.9664934, z: 1.0948}
   m_Children: []
   m_Father: {fileID: 212547227518764085}
   m_RootOrder: 1
@@ -95,7 +95,7 @@ Transform:
   m_GameObject: {fileID: 5077545698012743102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1041648707977827828}
   m_Father: {fileID: 212547227518764085}
@@ -195,7 +195,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5228078022859817177}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _polygonCollider: {fileID: 4337203751076317522}
-  _deadSprite: {fileID: 0}
+  _deadSprite: {fileID: 21300000, guid: 67b7b24b357ed3c4ba1e5e80b281e9ba, type: 3}
   _particleSystem: {fileID: 1512841101099200791}
   speed: 3
 --- !u!50 &4581917273959615493
@@ -5313,8 +5313,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8938881618816416928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.6, y: 2.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.6, y: 1.5, z: 0}
+  m_LocalScale: {x: 1.9745, y: 1.9745, z: 1.9745}
   m_Children: []
   m_Father: {fileID: 212547227518764085}
   m_RootOrder: 2
