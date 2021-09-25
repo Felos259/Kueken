@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Soundboard : MonoBehaviour
 {
-    public AudioClip hintergrundSound_Kueken;
-    public AudioClip verzweifelt_Pipsen;
+    public AudioClip hintergrundSound;
+    public AudioClip sterben;
     public AudioClip kueken_WinSound;
     public AudioClip kaeferSummen;
     public AudioClip springen;
-    public AudioClip froehliches_Pipsen;
+    public AudioClip toeten;
+    public AudioClip gehen;
     private bool j = true;
 
     // Start is called before the first frame update
@@ -17,7 +18,7 @@ public class Soundboard : MonoBehaviour
     {
         AudioSource audio = GetComponent<AudioSource>();
 
-        audio.clip = hintergrundSound_Kueken;
+        audio.clip = hintergrundSound;
         audio.Play();
     }
 
@@ -28,12 +29,17 @@ public class Soundboard : MonoBehaviour
     }
     public void SoundSterben()
     {
-        if(j==true){
+        if (j == true) {
             AudioSource audio = GetComponent<AudioSource>();
 
-            audio.clip = verzweifelt_Pipsen;
+            audio.clip = sterben;
             audio.PlayScheduled(audio.clip.length);
             j = false;
+        }
+    }
+    public void beleben() {
+        if (j == false) {
+            j = true;
         }
     }
     public void SoundGewinnen()
@@ -61,8 +67,14 @@ public class Soundboard : MonoBehaviour
     {
         AudioSource audio = GetComponent<AudioSource>();
 
-        audio.clip = froehliches_Pipsen;
-        audio.PlayOneShot(froehliches_Pipsen, 1);
+        audio.clip = toeten;
+        audio.PlayOneShot(toeten, 1);
+    }
+    public void SoundGehen() {
+        AudioSource audio = GetComponent<AudioSource>();
+
+        audio.clip = gehen;
+        audio.PlayOneShot(gehen, 1);
     }
 
 }
