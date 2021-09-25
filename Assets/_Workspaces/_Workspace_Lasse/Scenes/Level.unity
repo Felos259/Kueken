@@ -231,6 +231,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 975909684540498697, guid: ba802164d204c844a8cd084684f4175f,
         type: 3}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 7796414416115872039}
+    - target: {fileID: 975909684540498697, guid: ba802164d204c844a8cd084684f4175f,
+        type: 3}
       propertyPath: message
       value: 
       objectReference: {fileID: 497809104}
@@ -1105,3 +1110,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2076c1e66565b8048af0faaad56a2183, type: 3}
+--- !u!114 &7796414416115872039 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3769131308286590412, guid: 2076c1e66565b8048af0faaad56a2183,
+    type: 3}
+  m_PrefabInstance: {fileID: 7796414416115872038}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7bc566dc4f75c74199742a4fd1e1c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
