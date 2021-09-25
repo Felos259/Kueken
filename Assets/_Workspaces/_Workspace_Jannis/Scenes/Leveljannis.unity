@@ -220,6 +220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1082495646}
+  MinX: -30
+  MaxX: 200
 --- !u!1 &491213654
 GameObject:
   m_ObjectHideFlags: 0
