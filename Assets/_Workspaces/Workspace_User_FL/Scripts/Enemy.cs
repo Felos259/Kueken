@@ -5,7 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameObject puppet;
-
+    public GameObject trigger1;
+    public GameObject trigger2;
 
     //Variablen für den Tod
     [SerializeField] Sprite _deadSprite;
@@ -15,7 +16,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        puppet.transform.Translate(Vector3.right);
     }
 
     // Update is called once per frame
@@ -26,7 +27,7 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (ShouldDieFromCollosion(collision)==true)
+        if (ShouldDieFromCollosion(collision) == true)
         {
             Die();
         }
@@ -55,5 +56,6 @@ public class Enemy : MonoBehaviour
         _particleSystem.Play();
         //gameObject.SetActive(false);
     }
+
 }
 
