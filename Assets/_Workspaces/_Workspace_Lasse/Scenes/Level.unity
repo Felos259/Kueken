@@ -595,3 +595,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  jumpSpeed: 10
+  "MaximaleSpringh\xF6he": 3
+  "MinimaleSpringh\xF6he": 1.5
