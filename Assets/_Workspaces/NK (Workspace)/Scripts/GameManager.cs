@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Q)) {
             EventManager.Invoke("OnPlayerDied", null, null);
         }
@@ -31,6 +32,6 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.M)) {
             EventManager.Invoke("OnWin", null, null);
-        }
+        }*/
     }
 }
