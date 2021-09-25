@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 734277134}
   - component: {fileID: 734277133}
   - component: {fileID: 734277135}
+  - component: {fileID: 734277136}
   m_Layer: 0
   m_Name: Untergrund
   m_TagString: Untagged
@@ -397,6 +398,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &734277136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734277132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838b345c6c420c343bf14a24b2fe5a5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1082495646
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,6 +423,7 @@ GameObject:
   - component: {fileID: 1082495647}
   - component: {fileID: 1082495651}
   - component: {fileID: 1082495650}
+  - component: {fileID: 1082495652}
   m_Layer: 0
   m_Name: Kueken
   m_TagString: Untagged
@@ -495,7 +509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082495646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.96, y: -2.38, z: 0}
+  m_LocalPosition: {x: -3.07, y: -2.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -526,9 +540,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.14, y: -0.37}
+    - - {x: 0.20624341, y: -0.39638865}
       - {x: 0.22999999, y: -0.22}
-      - {x: 0.22999999, y: 0.07}
+      - {x: 0.21195981, y: 0.0038526729}
       - {x: 0.19999999, y: 0.17}
       - {x: 0.099999994, y: 0.32}
       - {x: 0.03, y: 0.35}
@@ -537,14 +551,16 @@ PolygonCollider2D:
       - {x: -0.16, y: 0.19}
       - {x: -0.19, y: 0.04}
       - {x: -0.19, y: -0.17999999}
-      - {x: -0.14999999, y: -0.24}
-      - {x: -0.14999999, y: -0.35999998}
-      - {x: -0.099999994, y: -0.42999998}
-      - {x: -0.06, y: -0.42999998}
+      - {x: -0.19566429, y: -0.26628852}
+      - {x: -0.1807406, y: -0.34083343}
+      - {x: -0.16804017, y: -0.4261473}
+      - {x: -0.09946284, y: -0.42071}
+      - {x: -0.04212099, y: -0.4054164}
       - {x: 0, y: -0.42}
-      - {x: -0.02, y: -0.26999998}
-      - {x: 0.01, y: -0.38}
-      - {x: 0.099999994, y: -0.42999998}
+      - {x: -0.066932455, y: -0.43091178}
+      - {x: 0.034053575, y: -0.45216072}
+      - {x: 0.12937284, y: -0.41289496}
+      - {x: 0.1828154, y: -0.40603963}
 --- !u!50 &1082495651
 Rigidbody2D:
   serializedVersion: 4
@@ -565,4 +581,17 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &1082495652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082495646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe36362fc5548c744937a521c5041f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
