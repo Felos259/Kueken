@@ -13,8 +13,9 @@ public class Kueken : MonoBehaviour
 
     //Höhe am anfang des Sprunges
     float Anfangshöhe;
-    //Zwischenspeicherung für den Komponente "Rigidbody"
+    //Zwischenspeicherungen für Komponenten
     Rigidbody2D rigid;
+    SpriteRenderer sprite;
     
     //Gibt die Methode an, welche bei jedem Frame ausgelöst werden soll
     Action stateupdate;
@@ -24,6 +25,7 @@ public class Kueken : MonoBehaviour
     //Awake is called before the first frame update
     void Awake(){
         rigid = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         stateupdate = runningupdate;
     }
 
@@ -66,6 +68,11 @@ public class Kueken : MonoBehaviour
     void Move(){
         float horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime);
+
+        if (horizontalInput < 0)
+            sprite.flipX = true;
+        else
+            sprite.flipX = false;
     }
 
     //Eventbus um ggf. touch zu verändern
