@@ -20,6 +20,7 @@ public class Soundboard : MonoBehaviour
 
         audio.clip = hintergrundSound;
         audio.Play();
+        beleben();
     }
 
     // Update is called once per frame
