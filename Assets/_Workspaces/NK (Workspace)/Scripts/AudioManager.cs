@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
 
     private void OnPlayerDied(object sender, object eventArgs)
     {
-        sterbenSFX.Play();
+            sterbenSFX.Play();
     }
 
     private void OnGameStarted(object sender, object eventArgs)

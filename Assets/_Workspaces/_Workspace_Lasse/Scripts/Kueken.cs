@@ -1,3 +1,4 @@
+using Nvp.Events;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,8 +14,8 @@ public class Kueken : MonoBehaviour
     [SerializeField] float MinimaleSpringhöhe = 2;
 
     public GameObject message;
-    public Soundboard sound;
     public Animator animator;
+    public AudioManager sounds;
 
     //Höhe am anfang des Sprunges
     float Anfangshöhe;
@@ -50,8 +51,7 @@ public class Kueken : MonoBehaviour
             reset = false;
             Reset();
         }
-            
-            
+
         if (dead)
             return;
         stateupdate();
@@ -66,9 +66,13 @@ public class Kueken : MonoBehaviour
         //stateupdate ggf. ändern und Anfangshöhe setzen
         if(Input.GetKey(KeyCode.Space)&& touch){
             Anfangshöhe = rigid.position.y;
+            EventManager.Invoke("OnPlayerJump", null, null);
             animator.SetBool("Up", true);
             stateupdate = jumpingupdate;
         }
+
+        if ((Input.GetKey("a") || Input.GetKey("d") || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && touch)
+            EventManager.Invoke("OnPlayerGehen", null, null);
 
         Move();
     }
@@ -98,12 +102,6 @@ public class Kueken : MonoBehaviour
         transform.Translate(new Vector3(horizontalInput, 0, 0)  * Time.deltaTime);
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
-        /*!Probleme!
-        if(horizontalInput != 0){
-            Thread t1 = new Thread(sound.SoundGehen);
-            t1.Start();
-        }*/
-        
 
         if (horizontalInput < 0)
             sprite.flipX = true;
@@ -142,7 +140,7 @@ public class Kueken : MonoBehaviour
 
         animator.SetBool("Dead", true);
         showDeadMessage();
-
+        EventManager.Invoke("OnPlayerDied", null, null);
 
         new Thread(WaitAndReset).Start();
     }
