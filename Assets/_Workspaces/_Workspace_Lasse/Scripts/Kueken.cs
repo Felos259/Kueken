@@ -1,36 +1,78 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Kueken : MonoBehaviour
 {
-    //Schnelligkeit
+    //Varialen, welche in Unity veränderbar sein sollen
     [SerializeField] float moveSpeed = 10;
+    [SerializeField] float jumpSpeed = 10;
+    [SerializeField] float MaximaleSpringhöhe = 4;
+    [SerializeField] float MinimaleSpringhöhe = 2;
+
+    //Höhe am anfang des Sprunges
+    float Anfangshöhe;
+    //Zwischenspeicherung für den Komponente "Rigidbody"
+    Rigidbody2D rigid;
+    
+    //Gibt die Methode an, welche bei jedem Frame ausgelöst werden soll
+    Action stateupdate;
+    //Gibt an ob der Boden aktuell berührt wird
     bool touch = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    
+    //Awake is called before the first frame update
+    void Awake(){
+        rigid = GetComponent<Rigidbody2D>();
+        stateupdate = runningupdate;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        //if(Input.GetKey("a")){
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
-            float jump = Input.GetAxis("Jump");
-
-            transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime);
-
-            if(touch)
-                transform.Translate(0,jump*Time.deltaTime*100,0);
+    void Update(){
+        stateupdate();
     }
 
+    //bewegt horizontal und verändert ggf. stateupdate
+    void runningupdate()
+    {
+        //stateupdate ggf. ändern und Anfangshöhe setzen
+        if(Input.GetKey(KeyCode.Space)&& touch){
+            Anfangshöhe = rigid.position.y;
+            stateupdate = jumpingupdate;
+        }
+
+
+        Move();
+    }
+
+    //Bewegt Vertikal und Horizontal & verändert ggf. stateupdate(= Mit Sprung aufhören)
+    void jumpingupdate() {
+        //Vertikale Bewegung
+        transform.Translate(0, jumpSpeed * Time.deltaTime, 0);
+        bool key = Input.GetKey(KeyCode.Space);
+
+        //ggf. stateupdate verändern (Mit Sprung aufhören)
+        if (rigid.position.y > Anfangshöhe + MaximaleSpringhöhe || 
+                (!key && rigid.position.y > Anfangshöhe + MinimaleSpringhöhe)){
+            stateupdate = runningupdate;
+            Anfangshöhe = -100;
+        }
+
+ 
+        Move();
+    }
+
+    //Horizontale Bewegung
+    void Move(){
+        float horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime);
+    }
+
+    //Eventbus um ggf. touch zu verändern
     private void OnCollisionEnter2D(Collision2D other) {
         Untergrund unter = other.gameObject.GetComponent<Untergrund>();
             if(unter != null)
-                touch = true;
+                touch = true;  
     }
 
     private void OnCollisionExit2D(Collision2D other) {
