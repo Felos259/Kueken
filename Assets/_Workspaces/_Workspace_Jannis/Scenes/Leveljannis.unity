@@ -458,6 +458,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 975909684540498697, guid: ba802164d204c844a8cd084684f4175f,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1082495647}
     - target: {fileID: 975909684540498700, guid: ba802164d204c844a8cd084684f4175f,
         type: 3}
       propertyPath: m_RootOrder

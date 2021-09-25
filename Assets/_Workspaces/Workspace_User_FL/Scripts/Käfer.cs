@@ -8,13 +8,15 @@ public class Käfer : MonoBehaviour
     [SerializeField] PolygonCollider2D _polygonCollider;
     [SerializeField] Sprite _deadSprite;
     bool _hasDied;
+    SpriteRenderer sprite;
     [SerializeField] ParticleSystem _particleSystem;
     public int speed;
+
 
     // Start is called before the first frame update
     void Start()
     {
-    
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -45,6 +47,7 @@ public class Käfer : MonoBehaviour
     {
         Debug.Log("collision");
         speed*= -1;
+        sprite.flipX = !sprite.flipX;
     }
 
     bool ShouldDieFromCollosion(Collision2D collision)
