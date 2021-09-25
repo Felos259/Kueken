@@ -42,8 +42,7 @@ public class Kueken : MonoBehaviour
     void Update(){
         stateupdate();
 
-        
-        if (rigid.position.y < 7)
+        if (rigid.position.y < -7)
             Die();
     }
 
@@ -129,7 +128,7 @@ public class Kueken : MonoBehaviour
        // sound.SoundSterben();
 
 
-        //Thread.Sleep(2000);
+        Thread.Sleep(3000);
         transformer.position = new Vector3(-52 - 2, 0);
 
 
