@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Kueken : MonoBehaviour
@@ -24,6 +25,8 @@ public class Kueken : MonoBehaviour
     
     //Gibt die Methode an, welche bei jedem Frame ausgelöst werden soll
     Action stateupdate;
+    //Gibt die Methode an, wen den Sound "Gehen" ausgelöst werden soll
+    Action Soundgehen;
     //Gibt an ob der Boden aktuell berührt wird
     bool touch = false;
     
@@ -39,6 +42,7 @@ public class Kueken : MonoBehaviour
     void Update(){
         stateupdate();
 
+        
         if (rigid.position.y < -5)
             Die();
     }
@@ -52,7 +56,6 @@ public class Kueken : MonoBehaviour
             animator.SetBool("Up", true);
             stateupdate = jumpingupdate;
         }
-
 
         Move();
     }
@@ -82,6 +85,12 @@ public class Kueken : MonoBehaviour
         transform.Translate(new Vector3(horizontalInput, 0, 0)  * Time.deltaTime);
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
+        /*!Probleme!
+        if(horizontalInput != 0){
+            Thread t1 = new Thread(sound.SoundGehen);
+            t1.Start();
+        }*/
+        
 
         if (horizontalInput < 0)
             sprite.flipX = true;
@@ -91,10 +100,21 @@ public class Kueken : MonoBehaviour
 
     //Eventbus um ggf. touch zu verändern
     private void OnCollisionEnter2D(Collision2D other) {
-        Untergrund unter = other.gameObject.GetComponent<Untergrund>();
-            if(unter != null && other.contacts[0].normal.y>0.5)
-                touch = true;
         animator.SetBool("Down", false);
+
+        //Fals Boden berührt wird
+        Untergrund unter = other.gameObject.GetComponent<Untergrund>();
+        if(unter != null && other.contacts[0].normal.y>0.5)
+            touch = true;
+        else{
+            Käfer käfer = other.gameObject.GetComponent<Käfer>();
+            if (käfer == null)
+                return;
+            if(other.contacts[0].normal.x != 0) {
+                Die();
+            }
+        }
+        
     }
 
     private void OnCollisionExit2D(Collision2D other) {
@@ -106,6 +126,10 @@ public class Kueken : MonoBehaviour
     public void Die(){
         var pos = message.GetComponent<Transform>().position;
         message.GetComponent<Transform>().position = new Vector3(rigid.position.x - 15, pos.y, 20);
+
+
+
+        transformer.position = new Vector3(-52-2,0);
         sound.SoundSterben();
     }
 }
