@@ -10,5 +10,6 @@ public class Grube : MonoBehaviour
         if (player == null)
             return;
         player.GetComponent<PolygonCollider2D>().enabled = true;
+        player.Die();
     }
 }

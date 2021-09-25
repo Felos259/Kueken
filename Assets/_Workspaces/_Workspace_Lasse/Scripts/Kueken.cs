@@ -11,6 +11,8 @@ public class Kueken : MonoBehaviour
     [SerializeField] float MaximaleSpringhöhe = 4;
     [SerializeField] float MinimaleSpringhöhe = 2;
 
+    public GameObject message;
+
     //Höhe am anfang des Sprunges
     float Anfangshöhe;
     //Zwischenspeicherungen für Komponenten
@@ -78,7 +80,7 @@ public class Kueken : MonoBehaviour
     //Eventbus um ggf. touch zu verändern
     private void OnCollisionEnter2D(Collision2D other) {
         Untergrund unter = other.gameObject.GetComponent<Untergrund>();
-            if(unter != null)
+            if(unter != null && other.contacts[0].normal.y>0.5)
                 touch = true;  
     }
 
@@ -86,5 +88,10 @@ public class Kueken : MonoBehaviour
         Untergrund unter = other.gameObject.GetComponent<Untergrund>();
             if(unter != null)
                 touch = false;
+    }
+
+    public void Die(){
+        var pos = message.GetComponent<Transform>().position;
+        message.GetComponent<Transform>().position = new Vector3(pos.x, pos.y, 30);
     }
 }
