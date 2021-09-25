@@ -13,6 +13,7 @@ public class Kueken : MonoBehaviour
 
     public GameObject message;
     public Soundboard sound;
+    public Animator animator;
 
     //Höhe am anfang des Sprunges
     float Anfangshöhe;
@@ -48,6 +49,7 @@ public class Kueken : MonoBehaviour
         //stateupdate ggf. ändern und Anfangshöhe setzen
         if(Input.GetKey(KeyCode.Space)&& touch){
             Anfangshöhe = rigid.position.y;
+            animator.SetBool("Up", true);
             stateupdate = jumpingupdate;
         }
 
@@ -65,6 +67,8 @@ public class Kueken : MonoBehaviour
         if (rigid.position.y > Anfangshöhe + MaximaleSpringhöhe || 
                 (!key && rigid.position.y > Anfangshöhe + MinimaleSpringhöhe)){
             stateupdate = runningupdate;
+            animator.SetBool("Up", false);
+            animator.SetBool("Down", true);
             Anfangshöhe = -100;
         }
 
@@ -74,8 +78,10 @@ public class Kueken : MonoBehaviour
 
     //Horizontale Bewegung
     void Move(){
-        float horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime);
+        float horizontalInput = Input.GetAxis("Horizontal") * moveSpeed;
+        transform.Translate(new Vector3(horizontalInput, 0, 0)  * Time.deltaTime);
+
+        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
 
         if (horizontalInput < 0)
             sprite.flipX = true;
@@ -87,7 +93,8 @@ public class Kueken : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         Untergrund unter = other.gameObject.GetComponent<Untergrund>();
             if(unter != null && other.contacts[0].normal.y>0.5)
-                touch = true;  
+                touch = true;
+        animator.SetBool("Down", false);
     }
 
     private void OnCollisionExit2D(Collision2D other) {
