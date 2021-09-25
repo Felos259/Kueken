@@ -18,6 +18,7 @@ public class Kueken : MonoBehaviour
     //Zwischenspeicherungen für Komponenten
     Rigidbody2D rigid;
     SpriteRenderer sprite;
+    Transform transformer;
     
     //Gibt die Methode an, welche bei jedem Frame ausgelöst werden soll
     Action stateupdate;
@@ -28,12 +29,16 @@ public class Kueken : MonoBehaviour
     void Awake(){
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        transformer = GetComponent<Transform>();
         stateupdate = runningupdate;
     }
 
     // Update is called once per frame
     void Update(){
         stateupdate();
+
+        if (rigid.position.y < -5)
+            Die();
     }
 
     //bewegt horizontal und verändert ggf. stateupdate
@@ -92,6 +97,7 @@ public class Kueken : MonoBehaviour
 
     public void Die(){
         var pos = message.GetComponent<Transform>().position;
-        message.GetComponent<Transform>().position = new Vector3(pos.x, pos.y, 30);
+        message.GetComponent<Transform>().position = new Vector3(rigid.position.x - 15, pos.y, 20);
+
     }
 }
