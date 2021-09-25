@@ -43,7 +43,7 @@ public class Kueken : MonoBehaviour
         stateupdate();
 
         
-        if (rigid.position.y < -5)
+        if (rigid.position.y < 7)
             Die();
     }
 
@@ -126,10 +126,21 @@ public class Kueken : MonoBehaviour
     public void Die(){
         var pos = message.GetComponent<Transform>().position;
         message.GetComponent<Transform>().position = new Vector3(rigid.position.x - 15, pos.y, 20);
+       // sound.SoundSterben();
 
 
+        //Thread.Sleep(2000);
+        transformer.position = new Vector3(-52 - 2, 0);
 
-        transformer.position = new Vector3(-52-2,0);
-        sound.SoundSterben();
+
+        //Thread t1 = new Thread(Reset);
+        //t1.Start();
     }
+    /*
+    private void Reset()
+    {
+        transformer.position = new Vector3(-52, 10, 0);
+        Thread.Sleep(2000);
+        transformer.position = new Vector3(-52 - 2, 0);
+    }*/
 }
