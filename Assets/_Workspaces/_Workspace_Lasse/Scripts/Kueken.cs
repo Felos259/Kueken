@@ -5,30 +5,36 @@ using UnityEngine;
 
 public class Kueken : MonoBehaviour
 {
-    //Schnelligkeit
+    //Varialen, welche in Unity veränderbar sein sollen
     [SerializeField] float moveSpeed = 10;
     [SerializeField] float jumpSpeed = 10;
     [SerializeField] float MaximaleSpringhöhe = 4;
     [SerializeField] float MinimaleSpringhöhe = 2;
 
+    //Höhe am anfang des Sprunges
     float Anfangshöhe;
+    //Zwischenspeicherungen für Komponenten
     Rigidbody2D rigid;
+    SpriteRenderer sprite;
     
+    //Gibt die Methode an, welche bei jedem Frame ausgelöst werden soll
     Action stateupdate;
+    //Gibt an ob der Boden aktuell berührt wird
     bool touch = false;
     
-    // Start is called before the first frame update
-    void Awake()
-    {
+    //Awake is called before the first frame update
+    void Awake(){
         rigid = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         stateupdate = runningupdate;
     }
 
+    // Update is called once per frame
     void Update(){
         stateupdate();
     }
 
-    // Update is called once per frame
+    //bewegt horizontal und verändert ggf. stateupdate
     void runningupdate()
     {
         //stateupdate ggf. ändern und Anfangshöhe setzen
@@ -41,28 +47,35 @@ public class Kueken : MonoBehaviour
         Move();
     }
 
-    //Horizontale Bewegung
-    void Move(){
-        float horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime);
-    }
-
+    //Bewegt Vertikal und Horizontal & verändert ggf. stateupdate(= Mit Sprung aufhören)
     void jumpingupdate() {
-        //Horizontale Bewegung
+        //Vertikale Bewegung
         transform.Translate(0, jumpSpeed * Time.deltaTime, 0);
         bool key = Input.GetKey(KeyCode.Space);
 
-        //ggf. state verändern
+        //ggf. stateupdate verändern (Mit Sprung aufhören)
         if (rigid.position.y > Anfangshöhe + MaximaleSpringhöhe || 
                 (!key && rigid.position.y > Anfangshöhe + MinimaleSpringhöhe)){
             stateupdate = runningupdate;
             Anfangshöhe = -100;
         }
 
-        //Horizontale Bewegung aurufen
+ 
         Move();
     }
 
+    //Horizontale Bewegung
+    void Move(){
+        float horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime);
+
+        if (horizontalInput < 0)
+            sprite.flipX = true;
+        else
+            sprite.flipX = false;
+    }
+
+    //Eventbus um ggf. touch zu verändern
     private void OnCollisionEnter2D(Collision2D other) {
         Untergrund unter = other.gameObject.GetComponent<Untergrund>();
             if(unter != null)
