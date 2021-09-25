@@ -10,7 +10,7 @@ public class Soundboard : MonoBehaviour
     public AudioClip kaeferSummen;
     public AudioClip springen;
     public AudioClip froehliches_Pipsen;
-
+    private bool j = true;
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +28,13 @@ public class Soundboard : MonoBehaviour
     }
     public void SoundSterben()
     {
-        AudioSource audio = GetComponent<AudioSource>();
+        if(j==true){
+            AudioSource audio = GetComponent<AudioSource>();
 
-        audio.clip = verzweifelt_Pipsen;
-        audio.PlayOneShot(verzweifelt_Pipsen, 1);
+            audio.clip = verzweifelt_Pipsen;
+            audio.PlayScheduled(audio.clip.length);
+            j = false;
+        }
     }
     public void SoundGewinnen()
     {
