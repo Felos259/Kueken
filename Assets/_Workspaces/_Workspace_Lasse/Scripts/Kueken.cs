@@ -11,11 +11,14 @@ public class Kueken : MonoBehaviour
     [SerializeField] float MaximaleSpringhöhe = 4;
     [SerializeField] float MinimaleSpringhöhe = 2;
 
+    public GameObject message;
+
     //Höhe am anfang des Sprunges
     float Anfangshöhe;
     //Zwischenspeicherungen für Komponenten
     Rigidbody2D rigid;
     SpriteRenderer sprite;
+    Transform transformer;
     
     //Gibt die Methode an, welche bei jedem Frame ausgelöst werden soll
     Action stateupdate;
@@ -26,12 +29,16 @@ public class Kueken : MonoBehaviour
     void Awake(){
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        transformer = GetComponent<Transform>();
         stateupdate = runningupdate;
     }
 
     // Update is called once per frame
     void Update(){
         stateupdate();
+
+        if (rigid.position.y < -5)
+            Die();
     }
 
     //bewegt horizontal und verändert ggf. stateupdate
@@ -78,7 +85,7 @@ public class Kueken : MonoBehaviour
     //Eventbus um ggf. touch zu verändern
     private void OnCollisionEnter2D(Collision2D other) {
         Untergrund unter = other.gameObject.GetComponent<Untergrund>();
-            if(unter != null)
+            if(unter != null && other.contacts[0].normal.y>0.5)
                 touch = true;  
     }
 
@@ -86,5 +93,11 @@ public class Kueken : MonoBehaviour
         Untergrund unter = other.gameObject.GetComponent<Untergrund>();
             if(unter != null)
                 touch = false;
+    }
+
+    public void Die(){
+        var pos = message.GetComponent<Transform>().position;
+        message.GetComponent<Transform>().position = new Vector3(rigid.position.x - 15, pos.y, 20);
+
     }
 }
