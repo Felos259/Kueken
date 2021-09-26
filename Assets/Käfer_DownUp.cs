@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Käfer : MonoBehaviour
+public class Käfer_DownUp : MonoBehaviour 
 {
 
     [SerializeField] PolygonCollider2D _polygonCollider;
@@ -25,7 +25,7 @@ public class Käfer : MonoBehaviour
     void Update()
     {
         //bewegt sich für die Zeit, die der letzte
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 
      void OnCollisionEnter2D(Collision2D collision)
@@ -49,7 +49,6 @@ public class Käfer : MonoBehaviour
     {
         Debug.Log("collision");
         speed*= -1;
-        _renderer.flipX = !_renderer.flipX;
         
     }
 
