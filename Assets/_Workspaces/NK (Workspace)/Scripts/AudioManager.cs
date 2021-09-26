@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
 
     private void OnPlayerDied(object sender, object eventArgs)
     {
-            sterbenSFX.Play();
+            sterbenSFX.PlayOneShot(sterbenSFX.clip);
     }
 
     private void OnGameStarted(object sender, object eventArgs)
@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour
     }
     private void OnKaeferSummen(object sender, object eventArgs)
     {
-        kaeferSummen.Play();
+        kaeferSummen.PlayOneShot(kaeferSummen.clip);
     }
     private void OnWin(object sender, object eventArgs)
     {
