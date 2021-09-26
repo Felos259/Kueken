@@ -28,13 +28,14 @@ public class GameManager : MonoBehaviour
         EventManager.Invoke("OnPlayerKilled", null, null);
     }
     public void PlayerGeht() {
-        EventManager.Invoke("OnPlayerGehen", null, null);
+        
+        
     }
     public void Kaefersummt() {
-        EventManager.Invoke("OnKaeferSummen", null, null);
+        
     }
     public void PlayerJump() {
-        EventManager.Invoke("OnPlayerJump", null, null);
+        
     }
     public void Win() {
         EventManager.Invoke("OnWin", null, null);

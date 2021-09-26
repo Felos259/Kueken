@@ -58,6 +58,10 @@ public class Kueken : MonoBehaviour
         if (rigid.position.y < -7)
             Die();
     }
+    void OnRunningEnter() {
+        EventManager.Invoke("OnPlayerGehen", null, null);
+        stateupdate = runningupdate;
+    }
 
     //bewegt horizontal und verändert ggf. stateupdate
     void runningupdate()
@@ -67,15 +71,24 @@ public class Kueken : MonoBehaviour
             Anfangshöhe = rigid.position.y;
             EventManager.Invoke("OnPlayerJump", null, null);
             animator.SetBool("Up", true);
-            stateupdate = jumpingupdate;
+            stateupdate = OnJumpingEnter;
         }
 
-        if ((Input.GetKey("a") || Input.GetKey("d") || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && touch)
-            EventManager.Invoke("OnPlayerGehen", null, null);
+        //if ((Input.GetKey("a") || Input.GetKey("d") || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && touch)
+        //    EventManager.Invoke("OnPlayerGehen", null, null);
 
         Move();
     }
-
+    void OnIdleEnter() { 
+        
+    }
+    void IdleUpdate() { 
+        
+    }
+    void OnJumpingEnter() {
+        EventManager.Invoke("OnPlayerJump", null, null);
+        stateupdate = jumpingupdate;
+    }
     //Bewegt Vertikal und Horizontal & verändert ggf. stateupdate(= Mit Sprung aufhören)
     void jumpingupdate() {
         //Vertikale Bewegung
@@ -85,7 +98,7 @@ public class Kueken : MonoBehaviour
         //ggf. stateupdate verändern (Mit Sprung aufhören)
         if (rigid.position.y > Anfangshöhe + MaximaleSpringhöhe || 
                 (!key && rigid.position.y > Anfangshöhe + MinimaleSpringhöhe)){
-            stateupdate = runningupdate;
+            stateupdate = OnRunningEnter;
             animator.SetBool("Up", false);
             animator.SetBool("Down", true);
             Anfangshöhe = -100;

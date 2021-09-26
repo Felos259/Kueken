@@ -1,3 +1,4 @@
+using Nvp.Events;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,6 @@ public class Enemy : MonoBehaviour
     public GameObject puppet;
     public GameObject trigger1;
     public GameObject trigger2;
-    public GameManager game;
     int j = 0;
 
     //Variablen für den Tod
@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     }
     void Summen() {
         if (j == 120) {
-            game.Kaefersummt();
+            EventManager.Invoke("OnKaeferSummen", null, null);
         }
     }
 

@@ -47,6 +47,7 @@ public class AudioManager : MonoBehaviour
     }
     private void OnPlayerJump(object sender, object eventArgs)
     {
+        gehenSFX.Stop();
         springenSFX.Play();
     }
     private void OnPlayerKilled(object sender, object eventArgs)
@@ -63,6 +64,8 @@ public class AudioManager : MonoBehaviour
     }
     private void OnPlayerGehen(object sender, object eventArgs)
     {
+        gehenSFX.Play();
+        gehenSFX.Play();
         gehenSFX.Play();
     }
 }
