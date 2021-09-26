@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Nvp.Events;
 
 public class Käfer : MonoBehaviour
 {
@@ -90,8 +91,10 @@ public class Käfer : MonoBehaviour
         return false;
     }
 
-    void Die()
+    void Die() 
     {
+        Debug.Log("Kaefer Died");
+        EventManager.Invoke("OnPlayerKilled", null, null);
         _hasDied = true;
         if(_polygonCollider.enabled)_polygonCollider.enabled = false;
         if(_boxCollider.enabled)_boxCollider.enabled = false;

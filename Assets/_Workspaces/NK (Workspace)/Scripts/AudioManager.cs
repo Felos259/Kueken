@@ -59,7 +59,8 @@ public class AudioManager : MonoBehaviour
     }
     private void OnPlayerKilled(object sender, object eventArgs)
     {
-        toetenSFX.Play();
+        Debug.Log("PlayerKilled");
+        toetenSFX.PlayOneShot(toetenSFX.clip);
     }
     private void OnKaeferSummen(object sender, object eventArgs)
     {
