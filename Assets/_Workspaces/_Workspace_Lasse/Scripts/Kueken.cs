@@ -15,8 +15,7 @@ public class Kueken : MonoBehaviour
 
     public GameObject message;
     public Animator animator;
-    public AudioManager sounds;
-
+    public GameManager game;
     //Höhe am anfang des Sprunges
     float Anfangshöhe;
     //Zwischenspeicherungen für Komponenten
