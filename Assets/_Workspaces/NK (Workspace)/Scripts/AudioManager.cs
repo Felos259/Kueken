@@ -68,6 +68,7 @@ public class AudioManager : MonoBehaviour
     }
     private void OnWin(object sender, object eventArgs)
     {
+        backgroundMusic.Stop();
         winSFX.Play();
     }
     private void OnPlayerGehen(object sender, object eventArgs)

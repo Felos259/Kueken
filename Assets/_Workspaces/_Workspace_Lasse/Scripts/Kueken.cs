@@ -12,10 +12,13 @@ public class Kueken : MonoBehaviour
     [SerializeField] float jumpSpeed = 10;
     [SerializeField] float MaximaleSpringhöhe = 4;
     [SerializeField] float MinimaleSpringhöhe = 2;
+    [SerializeField] int WinX = 257;
 
     public GameObject message;
     public Animator animator;
     public GameManager game;
+    public GameObject win;
+
     //Höhe am anfang des Sprunges
     public float Anfangshöhe;
     //Zwischenspeicherungen für Komponenten
@@ -128,6 +131,12 @@ public class Kueken : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
 
+        if(rigid.position.x > WinX)
+        {
+            Win();
+            return;
+        }
+
         if (horizontalInput < 0)
             sprite.flipX = true;
         else
@@ -206,5 +215,13 @@ public class Kueken : MonoBehaviour
         message.GetComponent<Transform>().position = new Vector3(-100, pos.y, -20);
     }
     
+    void Win()
+    {
+        dead = true;
+        EventManager.Invoke("OnWin", null, null);
+
+        var pos = win.GetComponent<Transform>().position;
+        win.GetComponent<Transform>().position = new Vector3(rigid.position.x - 15, pos.y, 20);
+    }
     
 }
