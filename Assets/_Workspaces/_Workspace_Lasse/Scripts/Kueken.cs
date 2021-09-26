@@ -34,6 +34,7 @@ public class Kueken : MonoBehaviour
     bool dead = false;
     //Gibt an der Körper reseten werden soll
     bool reset = false;
+    float Kontakx;
     
     //Awake is called before the first frame update
     void Awake(){
@@ -66,8 +67,10 @@ public class Kueken : MonoBehaviour
     //bewegt horizontal und verändert ggf. stateupdate
     void runningupdate()
     {
+        Move();
+
         //stateupdate ggf. ändern und Anfangshöhe setzen
-        if(Input.GetKey(KeyCode.Space)&& touch){
+        if (Input.GetKey(KeyCode.Space)&& touch){
             Anfangshöhe = rigid.position.y;
             animator.SetBool("Up", true);
             stateupdate = OnJumpingEnter;
@@ -77,20 +80,23 @@ public class Kueken : MonoBehaviour
         {
             stateupdate=OnIdleEnter;
         }
-        Move();
+        
     }
     void OnIdleEnter() {
         stateupdate = IdleUpdate;
         EventManager.Invoke("OnPlayerStay", null, null);
-
     }
     void IdleUpdate() {
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKey(KeyCode.Space))
+        {
             stateupdate = OnJumpingEnter;
         }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        {
             stateupdate = OnRunningEnter;
         }
+        else
+            animator.SetFloat("Speed", 0);
     }
     void OnJumpingEnter() {
         EventManager.Invoke("OnPlayerJump", null, null);
@@ -132,23 +138,25 @@ public class Kueken : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         animator.SetBool("Down", false);
 
-        //Fals Boden berührt wird
-        Untergrund unter = other.gameObject.GetComponent<Untergrund>();
-        if (unter != null)
-            touch = true;
-        else{
-            Käfer käfer = other.gameObject.GetComponent<Käfer>();
-            if (käfer == null)
-                return;
-            if(other.contacts[0].normal.x != 0) 
-                Die();
-        }
         
+        var objekt = other.gameObject;
+        if (objekt == null)
+            return;
+
+        Käfer käfer = objekt.GetComponent<Käfer>();
+        if (käfer != null && other.contacts[0].normal.x != 0)
+        {
+            Die();
+        }else
+        {
+            touch = true;
+            Kontakx = other.contacts[0].normal.x;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D other) {
-        Untergrund unter = other.gameObject.GetComponent<Untergrund>();
-        if(unter != null)
+        var objekt = other.gameObject;
+        if (objekt != null && Kontakx == 0)
             touch = false;
         if (stateupdate != jumpingupdate && !touch &&!dead)
             animator.SetBool("Down", true);
