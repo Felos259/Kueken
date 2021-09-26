@@ -22,7 +22,7 @@ public class Kueken : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer sprite;
     Transform transformer;
-    PolygonCollider2D collider;
+    BoxCollider2D collider;
 
     //Gibt die Methode an, welche bei jedem Frame ausgelöst werden soll
     Action stateupdate;
@@ -40,7 +40,7 @@ public class Kueken : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         transformer = GetComponent<Transform>();
-        collider = GetComponent<PolygonCollider2D>();
+        collider = GetComponent<BoxCollider2D>();
         stateupdate = runningupdate;
     }
 
@@ -114,9 +114,17 @@ public class Kueken : MonoBehaviour
 
         //Fals Boden berührt wird
         Untergrund unter = other.gameObject.GetComponent<Untergrund>();
-        if(unter != null && other.contacts[0].normal.y>0.5)
+        if (unter != null) {
+            ContactPoint2D[] kontake = other.contacts;
+            for(int z = 0;z < kontake.Length;z++){
+                if(kontake[z].normal.y > 0.5) {
+                    touch = true;
+                    break;
+                }
+            }
+            //other.contacts[0].normal.y > 0.5
             touch = true;
-        else{
+        }else{
             Käfer käfer = other.gameObject.GetComponent<Käfer>();
             if (käfer == null)
                 return;
@@ -128,8 +136,11 @@ public class Kueken : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other) {
         Untergrund unter = other.gameObject.GetComponent<Untergrund>();
-            if(unter != null)
-                touch = false;
+        if(unter != null)
+            touch = false;
+        if (stateupdate != jumpingupdate && !dead)
+            animator.SetBool("Down", true);
+
     }
 
     public void Die(){

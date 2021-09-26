@@ -485,7 +485,7 @@ PrefabInstance:
     - target: {fileID: 975909684540498700, guid: ba802164d204c844a8cd084684f4175f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -2.065
       objectReference: {fileID: 0}
     - target: {fileID: 975909684540498700, guid: ba802164d204c844a8cd084684f4175f,
         type: 3}
@@ -537,6 +537,11 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 975909684540498703, guid: ba802164d204c844a8cd084684f4175f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 975909684540498739, guid: ba802164d204c844a8cd084684f4175f,
         type: 3}
       propertyPath: m_Name
@@ -573,7 +578,7 @@ TextMesh:
   m_Text: "Auf seinem Weg nach Hause\nstellen sich Michi Gegner in den Weg.\nSpringe
     auf sie um sie aus dem Weg zu r\xE4umen"
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.5
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
@@ -634,7 +639,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267040911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.86, y: 5.3, z: 2.2727375}
+  m_LocalPosition: {x: 12.86, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -761,6 +766,32 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 260748706}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &358205412
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358205410}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.036141634, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5, y: 5}
+    newSize: {x: 5, y: 5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.325192, y: 4.783124}
+  m_EdgeRadius: 0
 --- !u!1 &449563337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,7 +1371,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2, y: 2}
-    newSize: {x: 7.4670105, y: 2}
+    newSize: {x: 2.97174, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
@@ -1393,7 +1424,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 7.4670105, y: 2}
+  m_Size: {x: 2.97174, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1407,7 +1438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608531237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 132.62, y: -0.03, z: 0}
+  m_LocalPosition: {x: 130.3724, y: -0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1462,7 +1493,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2, y: 2}
-    newSize: {x: 4.5375996, y: 3.992477}
+    newSize: {x: 4.5375996, y: 7.95393}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
@@ -1515,7 +1546,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 4.5375996, y: 3.992477}
+  m_Size: {x: 4.5375996, y: 7.95393}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1529,7 +1560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615265981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 133.95549, y: 2.9762, z: 0}
+  m_LocalPosition: {x: 134.07, y: 0.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1584,7 +1615,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2, y: 2}
-    newSize: {x: 11.050995, y: 2}
+    newSize: {x: 6.3590546, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
@@ -1637,7 +1668,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 11.050995, y: 2}
+  m_Size: {x: 6.3590546, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1651,7 +1682,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 617924168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 131, y: -2.05, z: 0}
+  m_LocalPosition: {x: 128.654, y: -2.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3254,7 +3285,7 @@ TextMesh:
     viel
     Erfolg auf deiner Reise'
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.5
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
@@ -3315,7 +3346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277045000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -62.79, y: 4.48, z: 0}
+  m_LocalPosition: {x: -62.79, y: 1.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3581,7 +3612,7 @@ TextMesh:
   m_Text: "Dr\xFCcke Leertaste um Michi springen\nzu lassen. F\xE4llt er runter verletzt
     sich\nMichi und die Reise ist beendet"
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.5
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
@@ -3642,7 +3673,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786415056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.54, y: 4.07, z: 0}
+  m_LocalPosition: {x: -47.77, y: 1.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
