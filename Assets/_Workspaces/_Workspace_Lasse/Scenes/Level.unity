@@ -505,6 +505,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 975909684540498697, guid: ba802164d204c844a8cd084684f4175f,
         type: 3}
+      propertyPath: win
+      value: 
+      objectReference: {fileID: 434558066}
+    - target: {fileID: 975909684540498697, guid: ba802164d204c844a8cd084684f4175f,
+        type: 3}
       propertyPath: sound
       value: 
       objectReference: {fileID: 0}
@@ -951,7 +956,7 @@ GameObject:
   - component: {fileID: 434558068}
   - component: {fileID: 434558067}
   m_Layer: 0
-  m_Name: Todesnachricht (1)
+  m_Name: Win
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
