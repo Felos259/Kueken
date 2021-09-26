@@ -21,22 +21,22 @@ public class GameManager : MonoBehaviour
 
 
     }
-    void Playerdied() {
+    public void Playerdied() {
         EventManager.Invoke("OnPlayerDied", null, null);
     }
-    void PlayerKilled() {
+    public void PlayerKilled() {
         EventManager.Invoke("OnPlayerKilled", null, null);
     }
-    void PlayerGeht() {
+    public void PlayerGeht() {
         EventManager.Invoke("OnPlayerGehen", null, null);
     }
-    void Kaefersummt() {
+    public void Kaefersummt() {
         EventManager.Invoke("OnKaeferSummen", null, null);
     }
-    void PlayerJump() {
+    public void PlayerJump() {
         EventManager.Invoke("OnPlayerJump", null, null);
     }
-    void Win() {
+    public void Win() {
         EventManager.Invoke("OnWin", null, null);
     }
 }
