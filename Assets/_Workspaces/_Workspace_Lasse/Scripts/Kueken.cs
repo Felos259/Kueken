@@ -17,7 +17,7 @@ public class Kueken : MonoBehaviour
     public Animator animator;
     public GameManager game;
     //Höhe am anfang des Sprunges
-    float Anfangshöhe;
+    public float Anfangshöhe;
     //Zwischenspeicherungen für Komponenten
     Rigidbody2D rigid;
     SpriteRenderer sprite;
@@ -114,17 +114,9 @@ public class Kueken : MonoBehaviour
 
         //Fals Boden berührt wird
         Untergrund unter = other.gameObject.GetComponent<Untergrund>();
-        if (unter != null) {
-            ContactPoint2D[] kontake = other.contacts;
-            for(int z = 0;z < kontake.Length;z++){
-                if(kontake[z].normal.y > 0.5) {
-                    touch = true;
-                    break;
-                }
-            }
-            //other.contacts[0].normal.y > 0.5
+        if (unter != null)
             touch = true;
-        }else{
+        else{
             Käfer käfer = other.gameObject.GetComponent<Käfer>();
             if (käfer == null)
                 return;
@@ -140,7 +132,6 @@ public class Kueken : MonoBehaviour
             touch = false;
         if (stateupdate != jumpingupdate && !touch &&!dead)
             animator.SetBool("Down", true);
-
     }
 
     public void Die(){
