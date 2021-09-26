@@ -138,7 +138,7 @@ public class Kueken : MonoBehaviour
         Untergrund unter = other.gameObject.GetComponent<Untergrund>();
         if(unter != null)
             touch = false;
-        if (stateupdate != jumpingupdate && !dead)
+        if (stateupdate != jumpingupdate && !touch &&!dead)
             animator.SetBool("Down", true);
 
     }
