@@ -69,21 +69,28 @@ public class Kueken : MonoBehaviour
         //stateupdate ggf. ändern und Anfangshöhe setzen
         if(Input.GetKey(KeyCode.Space)&& touch){
             Anfangshöhe = rigid.position.y;
-            EventManager.Invoke("OnPlayerJump", null, null);
             animator.SetBool("Up", true);
             stateupdate = OnJumpingEnter;
         }
 
-        //if ((Input.GetKey("a") || Input.GetKey("d") || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && touch)
-        //    EventManager.Invoke("OnPlayerGehen", null, null);
-
+        if ((!Input.GetKey("a") && !Input.GetKey("d") && !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)) && !Input.GetKey(KeyCode.Space))
+        {
+            stateupdate=OnIdleEnter;
+        }
         Move();
     }
-    void OnIdleEnter() { 
-        
+    void OnIdleEnter() {
+        stateupdate = IdleUpdate;
+        EventManager.Invoke("OnPlayerStay", null, null);
+
     }
-    void IdleUpdate() { 
-        
+    void IdleUpdate() {
+        if (Input.GetKey(KeyCode.Space)) {
+            stateupdate = OnJumpingEnter;
+        }
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
+            stateupdate = OnRunningEnter;
+        }
     }
     void OnJumpingEnter() {
         EventManager.Invoke("OnPlayerJump", null, null);

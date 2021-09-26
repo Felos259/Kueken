@@ -23,6 +23,7 @@ public class AudioManager : MonoBehaviour
         EventManager.AddEventListener("OnKaeferSummen", OnKaeferSummen);
         EventManager.AddEventListener("OnWin",OnWin);
         EventManager.AddEventListener("OnPlayerGehen", OnPlayerGehen);
+        EventManager.AddEventListener("OnPlayerStay", OnPlayerStay);
     }
 
     public void OnDisable()
@@ -34,6 +35,12 @@ public class AudioManager : MonoBehaviour
         EventManager.RemoveEventListener("OnKaeferSummen", OnKaeferSummen);
         EventManager.RemoveEventListener("OnWin", OnWin);
         EventManager.RemoveEventListener("OnPlayerGehen", OnPlayerGehen);
+        EventManager.RemoveEventListener("OnPlayerStay", OnPlayerStay);
+    }
+
+    private void OnPlayerStay(object sender, object eventArgs)
+    {
+        gehenSFX.Stop();
     }
 
     private void OnPlayerDied(object sender, object eventArgs)
@@ -64,8 +71,6 @@ public class AudioManager : MonoBehaviour
     }
     private void OnPlayerGehen(object sender, object eventArgs)
     {
-        gehenSFX.Play();
-        gehenSFX.Play();
         gehenSFX.Play();
     }
 }
