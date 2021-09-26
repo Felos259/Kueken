@@ -144,14 +144,16 @@ public class Kueken : MonoBehaviour
             return;
 
         Käfer käfer = objekt.GetComponent<Käfer>();
+        Käfer_DownUp vertikalkäfer = objekt.GetComponent<Käfer_DownUp>();
+
         if (käfer != null && other.contacts[0].normal.x != 0)
         {
             Die();
-        }else
-        {
-            touch = true;
-            Kontakx = other.contacts[0].normal.x;
+        } else if (vertikalkäfer != null && (other.contacts[0].normal.x != 0 || other.contacts[0].normal.y < -0.5)) {
+            Die();
         }
+        touch = true;
+        Kontakx = other.contacts[0].normal.x;
     }
 
     private void OnCollisionExit2D(Collision2D other) {
