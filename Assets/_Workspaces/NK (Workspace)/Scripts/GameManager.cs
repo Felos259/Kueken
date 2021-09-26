@@ -14,10 +14,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Playerdied();
-        PlayerGeht();
-        PlayerJump();
-        PlayerKilled();
 
 
     }
