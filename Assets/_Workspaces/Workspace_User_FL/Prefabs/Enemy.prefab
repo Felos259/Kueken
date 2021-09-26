@@ -195,7 +195,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5228078022859817177}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -333,7 +333,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _polygonCollider: {fileID: 4337203751076317522}
+  _boxCollider: {fileID: 0}
   _deadSprite: {fileID: 21300000, guid: 67b7b24b357ed3c4ba1e5e80b281e9ba, type: 3}
+  _renderer: {fileID: 0}
   _particleSystem: {fileID: 1512841101099200791}
   speed: 3
 --- !u!50 &4581917273959615493
